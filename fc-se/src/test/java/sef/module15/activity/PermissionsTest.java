@@ -16,14 +16,14 @@ public class PermissionsTest extends TestCase {
 		temp.setPermission(Permission.READ, Permission.WRITE, Permission.EXECUTE);
 		temp.setPermission(Permission.READ);
 		
-		assertTrue(temp.isPermissable(Permission.READ));
-		assertTrue(temp.isPermissable(Permission.WRITE));
-		assertFalse(temp.isPermissable(Permission.CREATE));
+		assertTrue(temp.isPermissible(Permission.READ));
+		assertTrue(temp.isPermissible(Permission.WRITE));
+		assertFalse(temp.isPermissible(Permission.CREATE));
 		
 		temp.removePermission(Permission.READ, Permission.WRITE);
-		assertTrue(temp.isPermissable(Permission.EXECUTE));
-		assertFalse(temp.isPermissable(Permission.READ));
-		assertFalse(temp.isPermissable(Permission.WRITE));
+		assertTrue(temp.isPermissible(Permission.EXECUTE));
+		assertFalse(temp.isPermissible(Permission.READ));
+		assertFalse(temp.isPermissible(Permission.WRITE));
 		}
 		catch(AssertionFailedError e){
 			logger.error(sef.module.percentage.Percentage.setFailedCount(1, e.getMessage()));

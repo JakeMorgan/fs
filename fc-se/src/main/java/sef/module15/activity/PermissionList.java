@@ -3,7 +3,7 @@ package sef.module15.activity;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PermissionList implements Permissable{
+public class PermissionList implements Permissible {
 	
 	private String permissionID;
 	private Set<Permission> permission;
@@ -15,56 +15,47 @@ public class PermissionList implements Permissable{
 	 */
 	public PermissionList(String permissionID){
 		this.permissionID = permissionID;
-		this.permission = new HashSet<Permission>();
+		this.permission = new HashSet<>();
 	}
 
-	/* (non-Javadoc)
-	 * @see sef.module14.activity.Permissable#getPermission()
+	/** (non-Javadoc)
+	 * @see Permissible#getPermission()
 	 */
-//	@Override
+	@Override
 	public Set<Permission> getPermission() {
 		return this.permission;
-		
 	}
 
 
-	/* (non-Javadoc)
-	 * @see sef.module14.activity.Permissable#removePermission(sef.module14.activity.Permission[])
+	/** (non-Javadoc)
+	 * @see Permissible#removePermission(sef.module15.activity.Permission[])
 	 */
-//	@Override
+	@Override
 	public void removePermission(Permission... permissions) {
-		if (permissions != null)
-			for(Permission permission : permissions) {
-				this.permission.remove(permission);
-			}
+		//todo: add implementation
 	}
 
 
-	/* (non-Javadoc)
-	 * @see sef.module14.activity.Permissable#setPermission(sef.module14.activity.Permission[])
+	/** (non-Javadoc)
+	 * @see Permissible#setPermission(sef.module15.activity.Permission[])
 	 */
-//	@Override
+	@Override
 	public void setPermission(Permission... permissions) {
-		if (permissions != null)
-			for(Permission permission : permissions) {
-				this.permission.add(permission);
-			}
+		//todo: add implementation
 	}
 
 
-	/* (non-Javadoc)
-	 * @see sef.module14.activity.Permissable#isPermissable(sef.module14.activity.Permission)
+	/** (non-Javadoc)
+	 * @see Permissible#isPermissible(sef.module15.activity.Permission)
 	 */
-//	@Override
-	public boolean isPermissable(Permission permission) {
-		return this.permission.contains(permission);
-		
+	@Override
+	public boolean isPermissible(Permission permission) {
+		return false; //todo: add implementation
 	}
 
 	public String getPermissionID() {
 		return permissionID;
 	}
-
 
 	public void setPermissionID(String permissionID) {
 		this.permissionID = permissionID;
