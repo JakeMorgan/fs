@@ -2,7 +2,7 @@ package sef.module15.activity;
 
 import java.util.Set;
 
-public interface Permissable{
+public interface Permissible {
 
 	/**
 	 * Sets the permission provided the Permissions passed as parameters
@@ -21,8 +21,16 @@ public interface Permissable{
 	
 	
 	/**
+	 * Returns collection of permissions
+	 *
 	 * @return
 	 */
 	public Set<Permission>getPermission();
-	public boolean isPermissable(Permission permission);
+
+	/**
+	 * Checks if passed permission acceptable
+	 * @param permission
+	 * @return
+	 */
+	public boolean isPermissible(Permission permission);
 }
