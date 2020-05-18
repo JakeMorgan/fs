@@ -1,5 +1,6 @@
 package sef.module9.activity;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -9,9 +10,10 @@ import java.util.List;
  * 
  *
  */
+
 public class RadarImpl implements Radar{
 
-
+	private List<RadarContact> contactList = new ArrayList<>();
 	
 	/**
 	 *  Constructs a new Radar 
@@ -25,13 +27,30 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#addContact(sef.module8.activity.RadarContact)
 	 */
 	public RadarContact addContact(RadarContact contact) {
-		return null;
+		//removeContact(contact.getContactID());
+		if(contact == null)
+			return null;
+		int i = 0;
+		for(RadarContact r:contactList){
+			if(r.getContactID() == contact.getContactID()){
+				contactList.set(i, contact);
+				return contact;
+			}
+			i++;
+		}
+		contactList.add(contact);
+		return contact;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#getContact(java.lang.String)
 	 */
 	public RadarContact getContact(String id) {
+		for (RadarContact r : contactList) {
+			if (r.getContactID().equals(id)) {
+				return r;
+			}
+		}
 		return null;
 	}
 
@@ -39,15 +58,19 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#getContactCount()
 	 */
 	public int getContactCount() {
-		
-		return 0;
+		return contactList.size();
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#removeContact(java.lang.String)
 	 */
 	public RadarContact removeContact(String id) {
-		
+		for (RadarContact r : contactList) {
+			if (r.getContactID().equals(id)) {
+				contactList.remove(r);
+				return r;
+			}
+		}
 		return null;
 	}
 
@@ -55,14 +78,15 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#returnContacts()
 	 */
 	public List<RadarContact> returnContacts() {
-		return null;
+		return new ArrayList<>(contactList);
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#returnContacts(java.util.Comparator)
 	 */
 	public List<RadarContact> returnContacts(Comparator<RadarContact> comparator) {
-		return null;
+		contactList.sort(comparator);
+		return new ArrayList<>(contactList);
 //		return Collections.sort(arg0, new DistanceComparator());
 	}
 

@@ -6,12 +6,12 @@ import java.util.Calendar;
  * Represents an implementation of the Currency interface.  The equality test for
  * this currency implementation requires that the value and the name of the denomination
  * must be true in order to be considered equal.
- * 
+ *
  * @author John Doe
  *
  */
 public class CurrencyImpl implements Currency {
-	
+
 	private float value;
 	private Denomination denomination;
 	private Calendar createDate;
@@ -20,8 +20,8 @@ public class CurrencyImpl implements Currency {
 	/**
 	 * Creates an instance of the of the Currency class with the specified
 	 * value and denomination
-	 * 
-	 * @param value the value of the currency 
+	 *
+	 * @param value the value of the currency
 	 * @param denomination the denomination of the currency
 	 */
 	public CurrencyImpl(float value, Denomination denomination) {
@@ -34,37 +34,45 @@ public class CurrencyImpl implements Currency {
 	 * @see sef.module6.activity.Currency#getValue()
 	 */
 	public float getValue() {
-		return 1;
+		return this.value;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Currency#getDenomination()
 	 */
 	public Denomination getDenomination() {
-		return null;
+		return this.denomination;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Currency#getCreateDate()
 	 */
 	public Calendar getCreateDate() {
-		return null;
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis((createDate.getTimeInMillis()));
+		return calendar;
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "";
+		return Float.valueOf(this.value) + " " + this.denomination.toString();
 	}
 
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public boolean equals(Object o) {
-		
-		return false;
+	public boolean equals(Object o){
+		if (o == this){
+			return true;
+		}
+		if(o == null){
+			return false;
+		}
+		CurrencyImpl c = (CurrencyImpl)o;
+		return c.getDenomination().getName().equals(this.getDenomination().getName()) && c.getValue() == this.getValue();
 	}
 
 }

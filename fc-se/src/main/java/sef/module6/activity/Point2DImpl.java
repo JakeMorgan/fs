@@ -4,12 +4,14 @@ package sef.module6.activity;
 public class Point2DImpl implements Point2D {
 	
 	
-	
+	private double x;
+	private double y;
 	/**
 	 * Creates a Point2D object at a default location (0,0)
 	 */
 	public Point2DImpl(){
-		
+		setX(0);
+		setY(0);
 	}
 	
 	/**
@@ -20,7 +22,8 @@ public class Point2DImpl implements Point2D {
 	 * @param y coordinate of the point along the y-axis
 	 */
 	public Point2DImpl(double x, double y){
-		
+		setX(x);
+		setY(y);
 	}
 	
 
@@ -28,7 +31,8 @@ public class Point2DImpl implements Point2D {
 	 * @see sef.module5.activity.Point2D#move(double, double)
 	 */
 	public final void move(double x, double y){
-	
+		setX(x);
+		setY(y);
 	}
 	
 	
@@ -37,7 +41,7 @@ public class Point2DImpl implements Point2D {
 	 * @see sef.module5.activity.Point2D#setX(double)
 	 */
 	public void setX(double x){
-	
+		this.x = x;
 	}
 	
 	
@@ -45,7 +49,7 @@ public class Point2DImpl implements Point2D {
 	 * @see sef.module5.activity.Point2D#setY(double)
 	 */
 	public void setY(double y){
-	
+		this.y = y;
 	}
 	
 
@@ -54,7 +58,7 @@ public class Point2DImpl implements Point2D {
 	 */
 	public double getX(){
 	
-		return 0;
+		return this.x;
 	}
 	
 	
@@ -63,7 +67,7 @@ public class Point2DImpl implements Point2D {
 	 */
 	public double getY(){
 		
-		return 0;
+		return this.y;
 	}
 	
 	
@@ -71,7 +75,8 @@ public class Point2DImpl implements Point2D {
 	 * @see sef.module5.activity.Point2D#translate(double, double)
 	 */
 	public final void translate(double dx, double dy){
-	
+		setX(getX()+dx);
+		setY(getY()+dy);
 	}
 	
 	
@@ -80,9 +85,15 @@ public class Point2DImpl implements Point2D {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
+	@Override
 	public boolean equals(Object p){
-		
-		return false;
+		Point2DImpl s = (Point2DImpl)p;
+
+		if(getX() == s.getX() && getY() == s.getY()){
+			return true;
+		}
+		else
+			return false;
 	}
 	
 
@@ -90,7 +101,10 @@ public class Point2DImpl implements Point2D {
 	 * @see sef.module5.activity.Point2D#equals(double, double)
 	 */
 	public boolean equals(double x2, double y2){
-		return false;
+		if(getX() == x2 && getY() == y2)
+			return true;
+		else
+			return false;
 	}
 	
 	
@@ -99,8 +113,8 @@ public class Point2DImpl implements Point2D {
 	 * @see sef.module5.activity.Point2D#getDistance(sef.module5.activity.Point2D)
 	 */
 	public final double getDistance(Point2D p){
-		
-		return 0;
+
+		return Math.sqrt((p.getY() - this.getY()) * (p.getY() - this.getY()) + (p.getX() - this.getX()) * (p.getX() - this.getX()));
 	}
 	
 	
@@ -110,7 +124,7 @@ public class Point2DImpl implements Point2D {
 	 */
 	public final double getDistance(double x2, double y2){
 		
-		return 0;
+		return Math.sqrt((y2 - getY()) * (y2 - getY()) + (x2 - getX()) * (x2 - getX()));
 	}
 	
 	

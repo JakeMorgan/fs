@@ -85,4 +85,5 @@ public interface Point2D {
 	 * @return true if the point represented by the parameters is equal to the current point, false otherwise
 	 */
 	public boolean equals(double x2, double y2);
+
 }

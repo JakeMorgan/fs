@@ -65,7 +65,7 @@ public class Point2DTest extends TestCase{
 		assertTrue(point1.equals(point2));
 		assertFalse(point1.equals(point3));
 		assertTrue(point1.equals(3,2));
-		assertFalse(point1.equals(9,9));	
+		assertFalse(point1.equals(9,9));
 		}catch(AssertionFailedError e){
 			logger.error(sef.module.percentage.Percentage.setFailedCount(1, e.getMessage()));
 			fail();

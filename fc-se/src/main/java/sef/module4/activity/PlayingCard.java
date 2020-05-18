@@ -26,10 +26,10 @@ public class PlayingCard {
 	
 	public static final int JOKER = 0;
 
-	public static final int SPADES = 4;
-	public static final int HEARTS = 3;
-	public static final int DIAMONDS = 2;
-	public static final int CLUBS = 1;
+	public static final int SPADES = 4; //Пики
+	public static final int HEARTS = 3; //Черви
+	public static final int DIAMONDS = 2; //Буби
+	public static final int CLUBS = 1; //Крести
 
 
 
@@ -48,7 +48,8 @@ public class PlayingCard {
 	
 	
 	//TODO #1: Write an instance variables that will handle the Integer value of number and suit.   
-	
+	private int number;
+	private int suit;
 	//END TODO #1
 	
 	
@@ -57,7 +58,13 @@ public class PlayingCard {
 		//TODO #2: Write code that will filter number and suit with the range provided above.
 		// Assign the number and suit argument to instance variable respectively
 		// If the arguments were not filter, make a code that will assign instance variables to a JOKER value
-		
+		if(suit < 0 || number < 0 ){
+			this.number = 0;
+			this.suit = 0;
+			return;
+		}
+		this.number = number;
+		this.suit = suit;
 		//END TODO #2
 		
 	
@@ -72,7 +79,8 @@ public class PlayingCard {
 
 		//TODO #3: Make an instance of JOKER playing card
 		// Assign instance variable to a JOKER value
-		
+		this.number = 0;
+		this.suit = 0;
 		//END TODO #3
 		
 		
@@ -90,10 +98,9 @@ public class PlayingCard {
 		
 		//TODO #4: Return the Integer value of the playing card
 		// Return the value of current value of the number 
-		
+		return number;
 		//END TODO #4
-	
-		return 0;
+
 	}
 
 
@@ -107,10 +114,9 @@ public class PlayingCard {
 
 		//TODO #5: Return the Integer value of the playing card
 		// Return the value of current value of the suit 
-		
+		return suit;
 		//END TODO #5
 
-		return 0;
 	}
 
 
@@ -127,9 +133,52 @@ public class PlayingCard {
 		// Provide single space between number-of and of-suit.
 		// It will be easier if a switch-case statement is use in the code. 
 		// Make a code that will return the String value of JOKER if the default value was chosen
-		
+		String name = "";
+		String suit = "";
+
+		switch (this.suit){
+			case 1: suit = "CLUBS";
+				break;
+			case 2: suit = "DIAMONDS";
+				break;
+			case 3: suit = "HEARTS";
+				break;
+			case 4: suit = "SPADES";
+				break;
+			default: return "JOKER";
+
+		}
+		switch (number){
+			case(1): name = "ACE";
+				break;
+			case(2): name = "TWO";
+				break;
+			case(3): name = "THREE";
+				break;
+			case(4): name = "FOUR";
+				break;
+			case(5): name = "FIVE";
+				break;
+			case(6): name = "SIX";
+				break;
+			case(7): name = "SEVEN";
+				break;
+			case(8): name = "EIGHT";
+				break;
+			case(9): name = "NINE";
+				break;
+			case(10): name = "TEN";
+				break;
+			case(11): name = "JACK";
+				break;
+			case(12): name = "QUEEN";
+				break;
+			case(13): name = "KING";
+				break;
+			default: return "JOKER";
+		}
 		//END TODO #6
 		
-		return "";
+		return name + " OF " + suit;
 	}
 }
