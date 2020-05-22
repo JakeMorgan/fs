@@ -10,7 +10,7 @@ package sef.module8.activity;
  */
 public class Account {
 
-
+	private String accountName;
 
 	/**
 	 * Creates an Account object with the specified name.  If the accout name
@@ -20,7 +20,13 @@ public class Account {
 	 * @throws AccountException
 	 */
 	public  Account(String accountName) throws AccountException{
-			
+		if(accountName.isEmpty() || accountName.length() < 5){
+			 throw new AccountException(AccountException.NAME_TOO_SHORT, accountName);
+		}
+		if(!accountName.matches("[a-zA-Z0-9]+$"))
+			throw new AccountException(AccountException.NAME_TOO_SIMPLE, accountName);
+
+			this.accountName = accountName;
 			
 			
 	}
@@ -32,6 +38,6 @@ public class Account {
 	 * @return the account name
 	 */
 	public String getName(){
-		return "";
+		return accountName;
 	}
 }

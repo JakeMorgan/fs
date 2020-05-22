@@ -27,12 +27,11 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#addContact(sef.module8.activity.RadarContact)
 	 */
 	public RadarContact addContact(RadarContact contact) {
-		//removeContact(contact.getContactID());
 		if(contact == null)
 			return null;
 		int i = 0;
 		for(RadarContact r:contactList){
-			if(r.getContactID() == contact.getContactID()){
+			if(r.getContactID().equals(contact.getContactID())){
 				contactList.set(i, contact);
 				return contact;
 			}
@@ -87,7 +86,6 @@ public class RadarImpl implements Radar{
 	public List<RadarContact> returnContacts(Comparator<RadarContact> comparator) {
 		contactList.sort(comparator);
 		return new ArrayList<>(contactList);
-//		return Collections.sort(arg0, new DistanceComparator());
 	}
 
 	

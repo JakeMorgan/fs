@@ -33,6 +33,11 @@ public class PermissionList implements Permissible {
 	@Override
 	public void removePermission(Permission... permissions) {
 		//todo: add implementation
+		if(permissions != null){
+			for(Permission permission : permissions){
+				this.permission.remove(permission);
+			}
+		}
 	}
 
 
@@ -42,6 +47,11 @@ public class PermissionList implements Permissible {
 	@Override
 	public void setPermission(Permission... permissions) {
 		//todo: add implementation
+		if(permissions != null){
+			for(Permission permission : permissions){
+				this.permission.add(permission);
+			}
+		}
 	}
 
 
@@ -50,7 +60,7 @@ public class PermissionList implements Permissible {
 	 */
 	@Override
 	public boolean isPermissible(Permission permission) {
-		return false; //todo: add implementation
+		return this.permission.contains(permission); //todo: add implementation
 	}
 
 	public String getPermissionID() {

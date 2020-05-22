@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.List;
+import java.sql.*;
 
 	public class AccountDAOTest extends TestCase {
 	
@@ -22,11 +23,20 @@ import java.util.List;
 		username = "sa";
 		password = "";
 		Class.forName("org.h2.Driver");
-        url = "jdbc:h2:~/test";
+        url = "jdbc:h2:~/test6";
         conn = DriverManager.getConnection(url, username, password);
 		conn.setAutoCommit(false);
 		System.out.println("Connection successfully established!");
+
+		Statement stmt = conn.createStatement();
+		//stmt.execute("DROP TABLE ACCOUNT");
+		//stmt.execute("CREATE TABLE ACCOUNT (" +
+		//		"ID NUMBER(10,0) PRIMARY KEY," +
+		//		"FIRST_NAME VARCHAR2(45 CHAR) NOT NULL," +
+		//		"LAST_NAME VARCHAR2(45 CHAR) NOT NULL," +
+		//		"E_MAIL VARCHAR2(45 CHAR) NOT NULL);");
 	}
+
 
 	public void testFindID(){
 		AccountDAO dao = new AccountDAOImpl(conn);
@@ -74,7 +84,6 @@ import java.util.List;
 		try {
 			boolean result = dao.insertAccount("Jack", "Bauer", "jack.bauer@ctu.gov");
 			assertTrue(result);
-			
 		} catch (AccountDAOException e) {
 			System.out.println(e.getCause().getMessage());
 			fail();
