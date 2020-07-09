@@ -18,6 +18,9 @@ public class HelloServlet extends HttpServlet {
         String name = req.getParameter("name");
         PrintWriter writer = resp.getWriter();
 
-        writer.println("Привет, " + name + "!");
+        if(!name.isEmpty())
+            writer.println("Привет, " + name + "!");
+        else
+            writer.println("Привет аноним!");
     }
 }
