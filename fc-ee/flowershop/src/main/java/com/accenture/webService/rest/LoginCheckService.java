@@ -17,6 +17,6 @@ public class LoginCheckService {
     @GET
     @Path("/{login}")
     public boolean checkLogin(@PathParam("login") String login){
-        return userAccessService.Get(login) != null;
+        return userAccessService.get(login) != null;
     }
 }

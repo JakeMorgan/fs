@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                getServletContext().getRequestDispatcher("index.jsp").include(request, response);
+                getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
             }
         }else if (request.getParameter("regsubmit") != null){
             User user = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "");

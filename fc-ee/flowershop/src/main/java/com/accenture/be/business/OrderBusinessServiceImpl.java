@@ -38,7 +38,7 @@ public class OrderBusinessServiceImpl implements OrderBusinessService {
 
     public void completeOrder(Long id){
         Order order = orderAccessService.getById(id);
-        order.SetStatus(OrderStatus.Complited);
+        order.setStatus(OrderStatus.Complited);
         orderAccessService.update(order);
     }
 }

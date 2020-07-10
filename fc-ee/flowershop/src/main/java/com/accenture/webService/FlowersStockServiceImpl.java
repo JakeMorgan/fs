@@ -16,10 +16,10 @@ public class FlowersStockServiceImpl implements FlowersStockService{
     private FlowerAccessService flowerAccessService;
     @Override
     public void increaseFlowersStockSize(int count) {
-        List<Flower> flowerList = flowerAccessService.GetFlowers();
+        List<Flower> flowerList = flowerAccessService.getFlowers();
         for(Flower flower : flowerList){
             flower.setCount(flower.getCount() + count);
-            flowerAccessService.Update(flower);
+            flowerAccessService.update(flower);
         }
     }
 }
