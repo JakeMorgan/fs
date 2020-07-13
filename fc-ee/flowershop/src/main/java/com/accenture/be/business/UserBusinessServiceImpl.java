@@ -40,4 +40,15 @@ public class UserBusinessServiceImpl implements UserBusinessService {
         userAccessService.update(user);
         return user;
     }
+
+    @Override
+    public User updateData(String oldName, String username, String password, String address, String phone){
+        User user = userAccessService.get(oldName);
+        user.setUserName(username);
+        user.setPassword(password);
+        user.setAddress(address);
+        user.setPhone(phone);
+        userAccessService.update(user);
+        return user;
+    }
 }

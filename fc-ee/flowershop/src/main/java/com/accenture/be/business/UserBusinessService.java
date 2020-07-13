@@ -11,4 +11,5 @@ public interface UserBusinessService {
     User register(String UserName, String Password, String Address, String Phone);
     User getInfo(String UserName);
     User updateBalance(String username, BigDecimal total);
+    User updateData(String oldName, String username, String password, String address, String phone);
 }

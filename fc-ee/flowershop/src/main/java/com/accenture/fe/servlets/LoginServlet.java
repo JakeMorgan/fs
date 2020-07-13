@@ -38,11 +38,11 @@ public class LoginServlet extends HttpServlet {
             User user = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "");
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            getServletContext().getRequestDispatcher("index.jsp").include(request, response);
+            getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
         }
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException{
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 }
