@@ -40,7 +40,8 @@ public class LoginServlet extends HttpServlet {
             User user = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "", new BigDecimal(0));
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
+            //getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
+            response.sendRedirect("index");
         }
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws
