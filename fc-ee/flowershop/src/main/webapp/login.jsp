@@ -24,7 +24,7 @@ pageEncoding="ISO-8859-1"%>
         </form>
         </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
-$("#username").on("input", function(){
+$("#username").change(function(){
     $.ajax({
         url: "/rest/check_login/"+$("$username").val(),
         success: function(data){
