@@ -12,7 +12,7 @@ pageEncoding="ISO-8859-1"%>
         <h1>User Login</h1>
         <form action="login" method="post">
             <label for="loginl">Login:</label>
-            <input name="username" id = "logini" size="30" />
+            <input name="username" id ="username" size="30" />
             <br>
             <br>
             <label for="passwordl">Password:</label>
@@ -20,19 +20,19 @@ pageEncoding="ISO-8859-1"%>
             <br>
             <label for="message"></label>
             <br>
-            <button type="submit" name="loginsubmit">Login</button><button type="submit" id="regsub" name="regsubmit">Register</button>
+            <button type="submit" name="loginsubmit">Login</button><button type="submit" id="regsubmit" name="regsubmit">Register</button>
         </form>
         </div>
 <script>
-$("#logini").change(function(){
+$("#username").change(function(){
     $ajax({
-        url: "/rest/check_login/"+$("$login").val(),
+        url: "/rest/check_login/"+$("$username").val(),
         success: function(data){
             if(data == "false"){
-            $("#regsub").prop("disabled", false);
+            $("#regsub").removeAttr("disabled", "false");
             }
             else{
-            $("#regsub").prop("disabled", true);
+            $("#regsub").attr("disabled", "true");
             }
         }
     });

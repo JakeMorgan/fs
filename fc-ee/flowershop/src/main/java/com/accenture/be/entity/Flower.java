@@ -4,13 +4,14 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name="FLOWERS")
 public class Flower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private BigDecimal price;
-    private int count;
+    private int quantity;
 
     public Long getId() {
         return id;
@@ -36,11 +37,11 @@ public class Flower {
         this.price = price;
     }
 
-    public int getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

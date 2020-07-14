@@ -21,9 +21,9 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
         return flowerList;
     }
 
-    public Flower updateFlowersCount(Long id, int count){
+    public Flower updateFlowersCount(Long id, int quantity){
         Flower flower = flowerAccessService.getById(id);
-        flower.setCount(flower.getCount()- count);
+        flower.setQuantity(flower.getQuantity()- quantity);
         flowerAccessService.update(flower);
         return flower;
     }
