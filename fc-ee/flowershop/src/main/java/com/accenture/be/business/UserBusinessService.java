@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Component
 public interface UserBusinessService {
     User login(String UserName, String password);
-    User register(String UserName, String Password, String Address, String Phone);
+    User register(String UserName, String Password, String Address, String Phone, BigDecimal Balance);
     User getInfo(String UserName);
     User updateBalance(String username, BigDecimal total);
     User updateData(String oldName, String username, String password, String address, String phone);

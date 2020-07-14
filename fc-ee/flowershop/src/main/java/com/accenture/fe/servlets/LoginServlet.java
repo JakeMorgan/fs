@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -32,10 +33,11 @@ public class LoginServlet extends HttpServlet {
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
+                //getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
+                response.sendRedirect("index");
             }
         }else if (request.getParameter("regsubmit") != null){
-            User user = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "");
+            User user = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "", new BigDecimal(0));
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             getServletContext().getRequestDispatcher("/index.jsp").include(request, response);

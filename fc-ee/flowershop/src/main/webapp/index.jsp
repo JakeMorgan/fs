@@ -18,9 +18,9 @@ import= "com.accenture.be.entity.User"%>
 <b><p>Phone: <input type="text" name="phone" size="40" value= <%=user.getPhone() %>></p></b>
 <b><p>Money: <%=user.getBalance() %></p></b>
 <br>
-<button type="submit" name="save">Save</button>
+<button type="submit" name="save" id="save">Save</button>
 <br>
-<button type="submit" name="flowers">Flowers</button>
+<button type="submit" name="flowers" id="flowers">Flowers</button>
 </div>
 </body>
 </html>

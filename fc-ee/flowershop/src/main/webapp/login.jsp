@@ -23,21 +23,23 @@ pageEncoding="ISO-8859-1"%>
             <button type="submit" name="loginsubmit">Login</button><button type="submit" id="regsubmit" name="regsubmit">Register</button>
         </form>
         </div>
-<script>
-$("#username").change(function(){
-    $ajax({
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+$("#username").on("input", function(){
+    $.ajax({
         url: "/rest/check_login/"+$("$username").val(),
         success: function(data){
-            if(data == "false"){
-            $("#regsub").removeAttr("disabled", "false");
+            if(data == "false")
+            {
+            $("#regsubmit").removeAttr("disabled");
+            alert("re");
             }
-            else{
-            $("#regsub").attr("disabled", "true");
+            else
+            {
+            $("#regsubmit").attr("disabled", "true");
             }
         }
     });
     });
-}
 </script>
 </body>
 </html>

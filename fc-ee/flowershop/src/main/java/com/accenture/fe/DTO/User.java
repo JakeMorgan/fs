@@ -1,19 +1,11 @@
-package com.accenture.be.entity;
+package com.accenture.fe.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.stereotype.Component;
-
-import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "USERS")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class User implements Serializable {
     private Long id;
-    private String username;
+    private String userName;
     private String password;
     private String address;
     private String phone;
@@ -23,8 +15,9 @@ public class User {
 
     }
 
-    public User(String userName, String password, String address, String phone, BigDecimal balance){
-        this.username = userName;
+    public User(Long id, String userName, String password, String address, String phone, BigDecimal balance) {
+        this.id = id;
+        this.userName = userName;
         this.password = password;
         this.address = address;
         this.phone = phone;
@@ -40,11 +33,11 @@ public class User {
     }
 
     public String getUserName() {
-        return username;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        this.username = userName;
+        this.userName = userName;
     }
 
     public String getPassword() {

@@ -17,9 +17,9 @@ public class UserBusinessServiceImpl implements UserBusinessService {
     }
 
     @Override
-    public User register(String UserName, String Password, String Address, String Phone){
-        if ((userAccessService.get(UserName) == null)) {
-            User user = new User(UserName, Password, Address, Phone);
+    public User register(String UserName, String Password, String Address, String Phone, BigDecimal Balance){
+        if (userAccessService.get(UserName) == null) {
+            User user = new User(UserName, Password, Address, Phone, Balance);
             userAccessService.create(user);
             return user;
         }
