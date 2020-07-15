@@ -25,6 +25,7 @@ public class IndexServlet extends HttpServlet {
             User user = userBusinessService.updateData(un.getUserName(), request.getParameter("username"), request.getParameter("password"), request.getParameter("address"),
                     request.getParameter("phone"));
             session.setAttribute("user", user);
+            response.sendRedirect("login");
         }
         if(request.getParameter("flowers") != null){
 
