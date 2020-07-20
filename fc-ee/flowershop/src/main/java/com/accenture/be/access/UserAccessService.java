@@ -3,10 +3,12 @@ package com.accenture.be.access;
 import com.accenture.be.entity.User;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 public interface UserAccessService {
-    User get(String UserName);
+    Optional<User> get(String userName);
     @Transactional
-    User getByUserNameAndPassword(String UserName, String Password);
+    User getByUserNameAndPassword(String userName, String password);
     @Transactional
     User create(User user);
     @Transactional

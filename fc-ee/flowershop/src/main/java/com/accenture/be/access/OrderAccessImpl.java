@@ -37,12 +37,7 @@ public class OrderAccessImpl implements OrderAccessService {
 
     @Override
     public Order update(Order order) {
-        try{
-            entityManager.merge(order);
-            return  order;
-        }catch(NoResultException ex){
-            return null;
-        }
+        return entityManager.merge(order);
     }
 
     @Override

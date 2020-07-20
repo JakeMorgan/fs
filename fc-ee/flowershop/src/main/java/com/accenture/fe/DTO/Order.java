@@ -1,20 +1,20 @@
 package com.accenture.fe.DTO;
 
-import com.accenture.be.entity.OrderItems;
+import com.accenture.be.entity.OrderItem;
 
 import java.util.List;
 import java.util.Date;
 public class Order {
     private Long userId;
     private int numberOrder;
-    private List<OrderItems> itemsList;
+    private List<OrderItem> itemsList;
     private Date orderDate;
 
     public Order(){
 
     }
 
-    public Order(Long userId, int numberOrder, List<OrderItems> itemsList, Date orderDate) {
+    public Order(Long userId, int numberOrder, List<OrderItem> itemsList, Date orderDate) {
         this.userId = userId;
         this.numberOrder = numberOrder;
         this.itemsList = itemsList;
@@ -37,11 +37,11 @@ public class Order {
         this.numberOrder = numberOrder;
     }
 
-    public List<OrderItems> getItemsList() {
+    public List<OrderItem> getItemsList() {
         return itemsList;
     }
 
-    public void setItemsList(List<OrderItems> itemsList) {
+    public void setItemsList(List<OrderItem> itemsList) {
         this.itemsList = itemsList;
     }
 

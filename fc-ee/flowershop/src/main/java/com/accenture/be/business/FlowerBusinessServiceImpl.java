@@ -12,8 +12,8 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
     @Autowired
     private FlowerAccessService flowerAccessService;
 
-    public Flower getFlower(String Name){
-        return null;
+    public Flower getFlower(long id){
+        return flowerAccessService.getById(id);
     }
 
     public List<Flower> flowersList(){
@@ -21,10 +21,11 @@ public class FlowerBusinessServiceImpl implements FlowerBusinessService {
         return flowerList;
     }
 
-    public Flower updateFlowersCount(Long id, int quantity){
-        Flower flower = flowerAccessService.getById(id);
-        flower.setQuantity(flower.getQuantity()- quantity);
-        flowerAccessService.update(flower);
-        return flower;
+    public Flower updateFlowersCount(Long id, int quantity) throws Exception{
+            Flower flower = flowerAccessService.getById(id);
+            if(flower == null) throw new Exception("UpdateFlowersCount - flower null");
+            flower.setQuantity(flower.getQuantity()- quantity);
+            flowerAccessService.update(flower);
+            return flower;
     }
 }

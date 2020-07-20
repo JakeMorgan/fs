@@ -27,9 +27,8 @@ public class FlowerAccessImpl implements FlowerAccessService {
     @Override
     public Flower getById(Long id) {
         try {
-            TypedQuery<Flower> query = entityManager.createQuery("SELECT f FROM Flower f WHERE f.id=:id", Flower.class);
-            query.setParameter("id", id);
-            return query.getSingleResult();
+            Flower flower = entityManager.find(Flower.class, id);
+            return flower;
         } catch (NoResultException ex) {
             return null;
         }
@@ -37,10 +36,6 @@ public class FlowerAccessImpl implements FlowerAccessService {
 
     @Override
     public Flower update(Flower flower) {
-        try{
-            return entityManager.merge(flower);
-        }catch(NoResultException ex){
-            return null;
-        }
+        return entityManager.merge(flower);
     }
 }

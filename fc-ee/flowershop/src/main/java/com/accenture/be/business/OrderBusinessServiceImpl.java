@@ -2,7 +2,6 @@ package com.accenture.be.business;
 
 import com.accenture.be.access.OrderAccessService;
 import com.accenture.be.entity.Order;
-import com.accenture.be.entity.OrderItems;
 import com.accenture.be.entity.User;
 import com.accenture.fe.Enums.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;

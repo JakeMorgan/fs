@@ -2,6 +2,8 @@ package com.accenture.fe.servlets;
 
 import com.accenture.be.business.UserBusinessService;
 import com.accenture.be.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -14,9 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
     @Autowired
     UserBusinessService userBusinessService;
 
@@ -29,23 +33,33 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         if(request.getParameter("loginsubmit") != null) {
-            User user = userBusinessService.login(request.getParameter("username"), request.getParameter("password"));
-            if (user != null) {
+            Optional<User> optionalUser =  userBusinessService.login(request.getParameter("username"), request.getParameter("password"));
+            if(optionalUser.isPresent()){
                 HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                //getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
+                session.setAttribute("user", optionalUser.get());
                 response.sendRedirect("index");
+            }else{
+                LOG.error("Неверный Login or Password");
             }
-        }else if (request.getParameter("regsubmit") != null){
-            User user = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "", new BigDecimal(0));
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            //getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
-            response.sendRedirect("index");
+        }
+        else if (request.getParameter("regsubmit") != null){
+            Optional<User> optionalUser = userBusinessService.register(request.getParameter("username"), request.getParameter("password"), "", "", new BigDecimal(0));
+            if(optionalUser.isPresent()){
+                HttpSession session = request.getSession();
+                session.setAttribute("user", optionalUser.get());
+                response.sendRedirect("index");
+            }else{
+                LOG.error("Пользователь уже существует");
+            }
         }
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException{
         request.getRequestDispatcher("/login.jsp").forward(request, response);
+    }
+
+    private User setUser(User u){
+        User user = u;
+        return user;
     }
 }

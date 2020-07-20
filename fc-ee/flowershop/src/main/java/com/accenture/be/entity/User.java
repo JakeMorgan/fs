@@ -18,7 +18,7 @@ public class User {
     private String address;
     private String phone;
     private BigDecimal balance;
-
+    private int discount;
     public User(){
 
     }
@@ -29,6 +29,7 @@ public class User {
         this.address = address;
         this.phone = phone;
         this.balance = balance;
+        this.discount = 0;
     }
 
     public Long getId() {
@@ -78,4 +79,8 @@ public class User {
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
+
+    public int getDiscount(){ return discount; }
+
+    public void setDiscount(int discount){ this.discount = discount; }
 }

@@ -1,6 +1,6 @@
 package com.accenture.be.entity;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import com.accenture.be.entity.User;
 import com.accenture.fe.Enums.OrderStatus;
 
@@ -12,10 +12,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date orderCreateDate;
-    private Date orderCompleteDate;
+    private LocalDate orderCreateDate;
+    private LocalDate orderCompleteDate;
     @ManyToOne(cascade = CascadeType.MERGE)
-    //@JoinColumn
+    @JoinColumn(name = "userId")
     private User user;
     private BigDecimal total;
     public OrderStatus status;
@@ -23,7 +23,7 @@ public class Order {
     public Order(User user, BigDecimal total){
         this.user = user;
         this.total = total;
-        this.orderCreateDate = new Date();
+        this.orderCreateDate = LocalDate.now();
         this.status = OrderStatus.Created;
         this.orderCompleteDate = null;
     }
@@ -32,7 +32,7 @@ public class Order {
         this.status = status;
     }
 
-    public void setCompleteDate(Date orderCompleteDate){
+    public void setCompleteDate(LocalDate orderCompleteDate){
         this.orderCompleteDate = orderCompleteDate;
     }
 }

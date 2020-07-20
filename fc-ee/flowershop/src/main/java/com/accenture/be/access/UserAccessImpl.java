@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
+import java.util.Optional;
+
 @Component
 @Service
 public class UserAccessImpl implements UserAccessService {
@@ -13,23 +15,23 @@ public class UserAccessImpl implements UserAccessService {
     private EntityManager entityManager;
 
     @Override
-    public User get(String UserName) {
+    public Optional<User> get(String userName) {
         try {
             TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.username=:username", User.class);
-            query.setParameter("username", UserName);
-            return query.getSingleResult();
+            query.setParameter("username", userName);
+            return Optional.ofNullable(query.getSingleResult());
         }catch(NoResultException ex){
                 return null;
             }
     }
 
     @Override
-    public User getByUserNameAndPassword(String UserName, String Password) {
+    public User getByUserNameAndPassword(String userName, String password) {
         try {
             TypedQuery<User> query = entityManager.createQuery("Select u From User u Where u.username=:username and " +
                     "u.password=:password", User.class);
-            query.setParameter("username", UserName);
-            query.setParameter("password", Password);
+            query.setParameter("username", userName);
+            query.setParameter("password", password);
             return query.getSingleResult();
         } catch (NoResultException ex) {
             return null;
@@ -48,10 +50,6 @@ public class UserAccessImpl implements UserAccessService {
 
     @Override
     public User update(User user) {
-        try{
-            return entityManager.merge(user);
-        }catch(NoResultException ex){
-            return null;
-        }
+        return entityManager.merge(user);
     }
 }

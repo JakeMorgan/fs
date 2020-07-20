@@ -1,5 +1,5 @@
 Create Table Users(
-Id long IDENTITY,
+Id long IDENTITY(1,1),
 UserName nvarchar(30),
 Password nvarchar(30),
 Address nvarchar(30),

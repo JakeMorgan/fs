@@ -4,24 +4,24 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class OrderItems {
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    //@JoinColumn
+    @JoinColumn(name = "orderId")
     private Order order;
     @ManyToOne
-    //@JoinColumn
+    @JoinColumn(name = "flowerId")
     private Flower flower;
     private int amount;
     private BigDecimal cost;
 
-    public OrderItems(){
+    public OrderItem(){
 
     }
 
-    public OrderItems(Flower flower, int amount){
+    public OrderItem(Flower flower, int amount){
         this.flower = flower;
         this.amount = amount;
         cost = flower.getPrice();
